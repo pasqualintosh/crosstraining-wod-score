@@ -1,2 +1,3 @@
-# sample-webpack-react
-just a sample with webpack and react
+# link to netlify
+
+https://wonderful-keller-fe1fd6.netlify.app/
