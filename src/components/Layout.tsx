@@ -35,6 +35,18 @@ const Layout: React.FC<IProps> = ({ children }): JSX.Element => {
         }}>
         {children}
       </span>
+      <span
+        style={{
+          display: 'flex',
+          justifyContent: 'space-around',
+          alignItems: 'center',
+          listStyleType: 'none',
+          padding: 0,
+          fontSize: '10px',
+          marginTop: '100px',
+        }}>
+        <p>Want a feature? chat with me: pasqsac[at]yahoo[dot]it</p>
+      </span>
     </>
   );
 };
