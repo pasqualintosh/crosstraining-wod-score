@@ -2,7 +2,7 @@
 
 https://wonderful-keller-fe1fd6.netlify.app/
 
-#tbd
+# tbd
 
 - profile page
 - updated_at timestamp in scores
