@@ -1,0 +1,63 @@
+/* 
+#263D42
+#8E6C88
+#63c7b2
+#80ced7
+#ccdbdc
+*/
+
+@import url('https://fonts.googleapis.com/css2?family=Zen+Kaku+Gothic+Antique&display=swap');
+
+body {
+  background-color: #263d42;
+  font-family: 'Zen Kaku Gothic Antique';
+}
+
+#root {
+  font-size: 1.5em;
+}
+
+#root * {
+  color: #ccdbdc;
+}
+
+#root a,
+a:visited,
+a:hover,
+a:active {
+  color: inherit;
+  text-decoration: underline;
+}
+
+#root table thead tr td {
+  color: #80ced7;
+}
+
+#root button {
+  background-color: #8e6c88;
+  border: unset;
+  border-radius: 5px;
+  color: #80ced7;
+}
+
+#root button:disabled {
+  background-color: #33333320;
+}
+
+#root .editScoreModal {
+  background: #ccdbdc;
+  width: 50vw;
+  min-height: 40vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  z-index: 9999;
+  position: absolute;
+  top: 25vh;
+  left: 25vw;
+}
+
+#root .editScoreModal * {
+  color: #3d3d3d;
+}
