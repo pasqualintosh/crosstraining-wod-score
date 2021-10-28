@@ -44,6 +44,30 @@ const Scores: React.FC<IProps> = (): JSX.Element => {
     }
   };
 
+  const deleteScore = (id: string | number): void => {
+    let currentScores = [...getCurrentScores()];
+    const index = currentScores.findIndex(score => score.id == id);
+    currentScores.splice(index, 1);
+
+    setScores([...currentScores]);
+    setCurrentScores([...currentScores]);
+  };
+
+  const editScore = (): void => {
+    if (editableScore) {
+      let currentScores = [...getCurrentScores()];
+      const index = currentScores.findIndex(
+        score => score.id == editableScore.id,
+      );
+      // currentScores.splice(index, 1);
+      currentScores[index] = { ...editableScore };
+
+      setCurrentScores([...currentScores]);
+      setEditableScore(undefined);
+      setShowEditModal(false);
+    }
+  };
+
   const editScoreModal = (): JSX.Element => {
     if (editableScore)
       return (
@@ -91,20 +115,7 @@ const Scores: React.FC<IProps> = (): JSX.Element => {
               />
             </span>
             <span>
-              <button
-                onClick={() => {
-                  let currentScores = [...getCurrentScores()];
-                  const index = currentScores.findIndex(
-                    score => score.id == editableScore.id,
-                  );
-                  currentScores.splice(index, 1);
-
-                  setCurrentScores([...currentScores, { ...editableScore }]);
-                  setEditableScore(undefined);
-                  setShowEditModal(false);
-                }}>
-                save
-              </button>
+              <button onClick={() => editScore()}>save</button>
             </span>
           </span>
         </div>
@@ -124,25 +135,27 @@ const Scores: React.FC<IProps> = (): JSX.Element => {
         </thead>
         <tbody>
           {scores?.map(score => (
-            <tr
-              key={score.id}
-              onClick={() => {
-                const currentEditableScore = scores?.find(
-                  clickedScore => clickedScore.id == score.id,
-                );
+            <tr key={score.id}>
+              <td
+                onClick={() => {
+                  const currentEditableScore = scores?.find(
+                    clickedScore => clickedScore.id == score.id,
+                  );
 
-                if (currentEditableScore) {
-                  setEditableScore({ ...currentEditableScore });
-                  setShowEditModal(true);
-                }
-              }}>
-              <td>{score.wod}</td>
+                  if (currentEditableScore) {
+                    setEditableScore({ ...currentEditableScore });
+                    setShowEditModal(true);
+                  }
+                }}>
+                {score.wod}
+              </td>
               <td>
                 {score.time?.seconds
                   ? `${score.time.minutes}'${score.time.seconds}"`
                   : `/`}
               </td>
               <td>{score.reps ? score.reps : '/'}</td>
+              <td onClick={() => deleteScore(score.id)}>[x]</td>
             </tr>
           ))}
         </tbody>

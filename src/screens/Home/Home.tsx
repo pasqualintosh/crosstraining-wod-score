@@ -1,5 +1,8 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import { useWodProviderContext, Score } from './../../providers/WodProvider';
+import { wods } from './../../data/wods';
+import { wodAlreadyExist } from './../../helpers/saveData';
 
 interface IProps {}
 interface IState {}
@@ -11,47 +14,22 @@ const getWodFromSamples = (samples: Array<string>): Array<string> => {
   return content.split(/\\r\\n/g);
 };
 
-const fetchRandomWod = async (): Promise<Array<String>> => {
-  const config: RequestInit = {
-    method: 'get',
-  };
-
-  const data = await fetch(
-    'https://dgurkaynak.github.io/wod-generator/',
-    config,
-  );
-  const text = await data.text();
-
-  let start = text.indexOf('<script>');
-  let end = text.indexOf('</script>');
-  let js_script = text.substr(start, end - start + '</script>'.length);
-
-  let samples_start =
-    js_script.indexOf('var samples = [') + 'var samples = ['.length;
-  let samples_end = js_script.indexOf('];');
-  let samples = js_script
-    .substr(samples_start, samples_end - samples_start)
-    .split(',');
-
-  return getWodFromSamples([...samples]);
+const fetchRandomWod = (): Array<String> => {
+  return getWodFromSamples([...wods]);
 };
 
 const Home: React.FC<IProps> = (): JSX.Element => {
   const [randomWod, setRandomWod] = React.useState<Array<String>>([]);
   const { setCurrentScores, getCurrentScores } = useWodProviderContext();
 
-  const initialize = async (): Promise<void> => {
-    const sample_wod = await fetchRandomWod();
+  const initialize = (): void => {
+    const sample_wod = fetchRandomWod();
     setRandomWod(sample_wod);
   };
 
   React.useEffect(() => {
     initialize();
   }, [randomWod.length]);
-
-  const handleGenerate = (
-    event: React.MouseEvent<HTMLButtonElement, MouseEvent>,
-  ): void => {};
 
   const handleSave = (
     event: React.MouseEvent<HTMLButtonElement, MouseEvent>,
@@ -70,7 +48,12 @@ const Home: React.FC<IProps> = (): JSX.Element => {
       },
     };
     let currentScores = getCurrentScores();
-    setCurrentScores([...currentScores, new_score]);
+    if (!wodAlreadyExist(currentScores, new_score.wod)) {
+      setCurrentScores([...currentScores, new_score]);
+      alert('wod saved');
+    } else {
+      alert('wod already exist, refresh');
+    }
   };
 
   return (
@@ -92,10 +75,10 @@ const Home: React.FC<IProps> = (): JSX.Element => {
           justifyContent: 'space-around',
           alignItems: 'center',
         }}>
-        <button onClick={() => {}} disabled={true}>
-          genera
+        <button>
+          <Link to={'/'}>generate</Link>
         </button>
-        <button onClick={handleSave}>salva</button>
+        <button onClick={handleSave}>save</button>
       </span>
     </div>
   );
