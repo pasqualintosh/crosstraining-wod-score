@@ -1,5 +1,5 @@
 import React from 'react';
-import { useWodProviderContext, Score } from './../../providers/WodProvider';
+import { useWodProviderContext, Score } from '../providers/WodProvider';
 
 interface IProps {}
 interface IState {}

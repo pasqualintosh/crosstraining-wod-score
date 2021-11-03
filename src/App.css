@@ -62,3 +62,20 @@ a:active {
 #root .editScoreModal * {
   color: #3d3d3d;
 }
+
+#root .profileInputMainContainer {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+#root .profileInputMainContainer .inputContainer {
+  display: flex;
+  flex: 1;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  min-width: 30vw;
+}

@@ -50,7 +50,7 @@ export const useWodProviderContext = (): WodContextState => {
   const context = React.useContext(WodProviderContext);
 
   if (context === undefined) {
-    throw new Error('OrderProviderContext must be used with a Provider');
+    throw new Error('WodProviderContext must be used with a Provider');
   }
 
   return context;

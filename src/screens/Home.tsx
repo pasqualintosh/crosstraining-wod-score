@@ -1,8 +1,8 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { useWodProviderContext, Score } from './../../providers/WodProvider';
-import { wods } from './../../data/wods';
-import { wodAlreadyExist } from './../../helpers/saveData';
+import { useWodProviderContext, Score } from '../providers/WodProvider';
+import { wods } from '../data/wods';
+import { wodAlreadyExist } from '../helpers/saveData';
 
 interface IProps {}
 interface IState {}
