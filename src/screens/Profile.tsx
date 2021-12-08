@@ -88,6 +88,7 @@ const Profile: React.FC<IProps> = (): JSX.Element => {
         <a href="https://thru-events.app.link/5nLqNU22Elb">THRU</a>
         <br />
         <a href="thru://events/144">THRU Email</a>
+        <a href="thru://events/144">THRU TEST</a>
       </span>
     </div>
   );
