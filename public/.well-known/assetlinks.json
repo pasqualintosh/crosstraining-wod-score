@@ -1,0 +1,12 @@
+[
+  {
+    "relation": ["delegate_permission/common.handle_all_urls"],
+    "target": {
+      "namespace": "android_app",
+      "package_name": "club.thru.android",
+      "sha256_cert_fingerprints": [
+        "33:12:DC:1B:11:05:1C:79:D5:97:1E:17:DD:EB:EB:EE:C5:0C:00:90:5C:B4:93:A4:96:89:FA:56:21:1C:10:E8"
+      ]
+    }
+  }
+]
