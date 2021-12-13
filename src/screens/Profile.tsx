@@ -85,7 +85,7 @@ const Profile: React.FC<IProps> = (): JSX.Element => {
           }}>
           save
         </button>
-        <a href="https://thru-events.app.link/5nLqNU22Elb">THRU</a>
+        <a href="https://thru-events.app.link/VOfmlSc7Wlb">THRU</a>
         <br />
         <a href="thru://events/144">THRU Email</a>
         <a href="thru://events/144">THRU TEST</a>
